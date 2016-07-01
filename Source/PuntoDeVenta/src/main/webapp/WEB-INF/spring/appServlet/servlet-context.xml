@@ -27,12 +27,12 @@
 	<context:component-scan base-package="com.ucr.PuntoDeVenta" />
 
 	<!-- Conexion con DB -->
-	<beans:bean id="clienteDao" class="com.ucr.PuntoDeVenta.DataAccess.ClienteDao">
+	<beans:bean id="productoDao" class="com.ucr.PuntoDeVenta.DataAccess.ProductoDao">
 		<beans:property name="dataSource" ref="dataSource" />
 	 </beans:bean>
-	<beans:bean id="clienteBiss"
-		class="com.ucr.PuntoDeVenta.Business.ClienteBusiness">
-		<beans:property name="clienteDao" ref="clienteDao" />
+	<beans:bean id="productoBiss"
+		class="com.ucr.PuntoDeVenta.Business.ProductoBusiness">
+		<beans:property name="productoDao" ref="productoDao"/>
 	</beans:bean>
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -69,5 +69,4 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	
 	</beans:beans>
