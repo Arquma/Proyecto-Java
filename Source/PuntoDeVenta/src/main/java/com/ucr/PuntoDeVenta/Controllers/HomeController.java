@@ -33,7 +33,7 @@ public class HomeController {
 	private ProductoBusiness productoBusiness; 
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model, 
+	public String home(  
 		HttpServletRequest request,
 		HttpServletResponse response,
 		@RequestParam(value = "language",required = false) String language) {
@@ -52,6 +52,13 @@ public class HomeController {
 	{
 		
 		return new Gson().toJson(productoBusiness.getProductos());
+	}
+	
+	@RequestMapping(value="/ingredientes", method = RequestMethod.POST)
+	public @ResponseBody String listaIngredientes(@RequestParam String Id) throws IOException
+	{
+		
+		return new Gson().toJson(productoBusiness.buscarProducto(Integer.parseInt(Id.trim())));
 	}
 
 	

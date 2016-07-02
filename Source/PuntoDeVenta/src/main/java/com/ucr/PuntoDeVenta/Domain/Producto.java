@@ -12,7 +12,7 @@ public class Producto {
 	private float precio;
 	private int existencias;
 	private boolean preparacion;
-	private List<Ingrediente> ingredientes;
+	private List<IngredienteEnProducto> ingredientes;
 	
 	public Producto() {
 
@@ -59,11 +59,11 @@ public class Producto {
 		this.preparacion = preparacion;
 	}
 
-	public List<Ingrediente> getIngredientes() {
+	public List<IngredienteEnProducto> getIngredientes() {
 		return ingredientes;
 	}
 
-	public void setIngredientes(List<Ingrediente> ingredientes) {
+	public void setIngredientes(List<IngredienteEnProducto> ingredientes) {
 		this.ingredientes = ingredientes;
 	}
 

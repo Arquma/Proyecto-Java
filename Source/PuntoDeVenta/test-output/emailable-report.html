@@ -31,22 +31,51 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">40.5 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">53.6 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
 <tr><th colspan="4">Default test &#8212; failed</th></tr>
-<tr class="failedodd"><td rowspan="1">com.ucr.GimnasioXyzLibraryB05027.ClienteTest</td><td><a href="#m1"><b>buscar</b>  </a></td><td class="numi">1</td><td>1467424253784</td><td class="numi">40492</td></tr>
+<tr class="failedodd"><td rowspan="1">com.ucr.GimnasioXyzLibraryB05027.ClienteTest</td><td><a href="#m1"><b>buscar</b>  </a></td><td class="numi">1</td><td>1467447030577</td><td class="numi">46367</td></tr>
 </table>
 <h1>Default test</h1>
 <h2 id="m1">com.ucr.GimnasioXyzLibraryB05027.ClienteTest:buscar</h2>
 <div style="padding-left:3em">
-<p>expected [4] but found [5]</p>
-org.testng.Assert.fail(Assert.java:94)
-<br/>at org.testng.Assert.failNotEquals(Assert.java:494)
-<br/>at org.testng.Assert.assertEquals(Assert.java:123)
-<br/>at org.testng.Assert.assertEquals(Assert.java:370)
-<br/>at org.testng.Assert.assertEquals(Assert.java:380)
+<p>PreparedStatementCallback; SQL [select id_producto,nombre,precio,existencias,preparacion from producto where id_producto=4]; Parameter index out of range (1 &gt; number of parameters, which is 0).; nested exception is java.sql.SQLException: Parameter index out of range (1 &gt; number of parameters, which is 0).</p>
+org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:108)
+<br/>at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+<br/>at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+<br/>at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:645)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:790)
+<br/>at com.ucr.PuntoDeVenta.DataAccess.ProductoDao.buscarProducto(ProductoDao.java:79)
+<br/>at com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar(ClienteTest.java:21)
+<br/>25 lines not shown
+<p>Caused by Parameter index out of range (1 &gt; number of parameters, which is 0).</p>
+com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+<br/>at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+<br/>at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:926)
+<br/>at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3288)
+<br/>at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3272)
+<br/>at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3314)
+<br/>at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3258)
+<br/>at com.mysql.jdbc.PreparedStatement.setObject(PreparedStatement.java:3533)
+<br/>at org.apache.commons.dbcp.DelegatingPreparedStatement.setObject(DelegatingPreparedStatement.java:166)
+<br/>at org.springframework.jdbc.core.StatementCreatorUtils.setValue(StatementCreatorUtils.java:432)
+<br/>at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValueInternal(StatementCreatorUtils.java:235)
+<br/>at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValue(StatementCreatorUtils.java:166)
+<br/>at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.doSetValue(ArgumentPreparedStatementSetter.java:66)
+<br/>at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.setValues(ArgumentPreparedStatementSetter.java:47)
+<br/>at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:686)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:629)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722)
+<br/>at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:790)
+<br/>at com.ucr.PuntoDeVenta.DataAccess.ProductoDao.buscarProducto(ProductoDao.java:79)
 <br/>at com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar(ClienteTest.java:21)
 <br/>25 lines not shown
 </div>

@@ -2,23 +2,28 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="40526" started-at="2016-07-02T01:50:53Z" finished-at="2016-07-02T01:51:34Z">
+  <suite name="Default suite" duration-ms="53616" started-at="2016-07-02T08:10:30Z" finished-at="2016-07-02T08:11:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="40526" started-at="2016-07-02T01:50:53Z" finished-at="2016-07-02T01:51:34Z">
+    <test name="Default test" duration-ms="53616" started-at="2016-07-02T08:10:30Z" finished-at="2016-07-02T08:11:24Z">
       <class name="com.ucr.GimnasioXyzLibraryB05027.ClienteTest">
-        <test-method status="FAIL" signature="buscar()[pri:0, instance:com.ucr.GimnasioXyzLibraryB05027.ClienteTest@5276e6b0]" name="buscar" duration-ms="40492" started-at="2016-07-01T19:50:53Z" finished-at="2016-07-01T19:51:34Z">
-          <exception class="java.lang.AssertionError">
+        <test-method status="FAIL" signature="buscar()[pri:0, instance:com.ucr.GimnasioXyzLibraryB05027.ClienteTest@159f197]" name="buscar" duration-ms="46367" started-at="2016-07-02T02:10:30Z" finished-at="2016-07-02T02:11:16Z">
+          <exception class="org.springframework.dao.TransientDataAccessResourceException">
             <message>
-              <![CDATA[expected [4] but found [5]]]>
+              <![CDATA[PreparedStatementCallback; SQL [select id_producto,nombre,precio,existencias,preparacion from producto where id_producto=4]; Parameter index out of range (1 > number of parameters, which is 0).; nested exception is java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [4] but found [5]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:370)
-	at org.testng.Assert.assertEquals(Assert.java:380)
+              <![CDATA[org.springframework.dao.TransientDataAccessResourceException: PreparedStatementCallback; SQL [select id_producto,nombre,precio,existencias,preparacion from producto where id_producto=4]; Parameter index out of range (1 > number of parameters, which is 0).; nested exception is java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:108)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:645)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:790)
+	at com.ucr.PuntoDeVenta.DataAccess.ProductoDao.buscarProducto(ProductoDao.java:79)
 	at com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar(ClienteTest.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -44,9 +49,27 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+Caused by: java.sql.SQLException: Parameter index out of range (1 > number of parameters, which is 0).
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:926)
+	at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3288)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3272)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3314)
+	at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3258)
+	at com.mysql.jdbc.PreparedStatement.setObject(PreparedStatement.java:3533)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.setObject(DelegatingPreparedStatement.java:166)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setValue(StatementCreatorUtils.java:432)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValueInternal(StatementCreatorUtils.java:235)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValue(StatementCreatorUtils.java:166)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.doSetValue(ArgumentPreparedStatementSetter.java:66)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.setValues(ArgumentPreparedStatementSetter.java:47)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:686)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:629)
+	... 30 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.springframework.dao.TransientDataAccessResourceException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- buscar -->

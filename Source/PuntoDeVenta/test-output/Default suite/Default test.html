@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Jul 01 19:50:53 CST 2016</td>
+<td>Started on:</td><td>Sat Jul 02 02:10:30 CST 2016</td>
 </tr>
-<tr><td>Total time:</td><td>40 seconds (40526 ms)</td>
+<tr><td>Total time:</td><td>53 seconds (53616 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,12 +76,17 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar()'><b>buscar</b><br>Test class: com.ucr.GimnasioXyzLibraryB05027.ClienteTest</td>
-<td><div><pre>java.lang.AssertionError: expected [4] but found [5]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:370)
-	at org.testng.Assert.assertEquals(Assert.java:380)
+<td><div><pre>org.springframework.dao.TransientDataAccessResourceException: PreparedStatementCallback; SQL [select id_producto,nombre,precio,existencias,preparacion from producto where id_producto=4]; Parameter index out of range (1 &gt; number of parameters, which is 0).; nested exception is java.sql.SQLException: Parameter index out of range (1 &gt; number of parameters, which is 0).
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:108)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:645)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:790)
+	at com.ucr.PuntoDeVenta.DataAccess.ProductoDao.buscarProducto(ProductoDao.java:79)
 	at com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar(ClienteTest.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -107,13 +112,36 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1634723627", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1634723627'><pre>java.lang.AssertionError: expected [4] but found [5]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertEquals(Assert.java:123)
-	at org.testng.Assert.assertEquals(Assert.java:370)
-	at org.testng.Assert.assertEquals(Assert.java:380)
+Caused by: java.sql.SQLException: Parameter index out of range (1 &gt; number of parameters, which is 0).
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:926)
+	at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3288)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3272)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3314)
+	at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3258)
+	at com.mysql.jdbc.PreparedStatement.setObject(PreparedStatement.java:3533)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.setObject(DelegatingPreparedStatement.java:166)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setValue(StatementCreatorUtils.java:432)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValueInternal(StatementCreatorUtils.java:235)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValue(StatementCreatorUtils.java:166)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.doSetValue(ArgumentPreparedStatementSetter.java:66)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.setValues(ArgumentPreparedStatementSetter.java:47)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:686)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:629)
+	... 30 more
+</pre></div><a href='#' onClick='toggleBox("stack-trace1956415355", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1956415355'><pre>org.springframework.dao.TransientDataAccessResourceException: PreparedStatementCallback; SQL [select id_producto,nombre,precio,existencias,preparacion from producto where id_producto=4]; Parameter index out of range (1 &gt; number of parameters, which is 0).; nested exception is java.sql.SQLException: Parameter index out of range (1 &gt; number of parameters, which is 0).
+	at org.springframework.jdbc.support.SQLStateSQLExceptionTranslator.doTranslate(SQLStateSQLExceptionTranslator.java:108)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:81)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:645)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:680)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:712)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:722)
+	at org.springframework.jdbc.core.JdbcTemplate.queryForObject(JdbcTemplate.java:790)
+	at com.ucr.PuntoDeVenta.DataAccess.ProductoDao.buscarProducto(ProductoDao.java:79)
 	at com.ucr.GimnasioXyzLibraryB05027.ClienteTest.buscar(ClienteTest.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -139,9 +167,27 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:137)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:58)
+Caused by: java.sql.SQLException: Parameter index out of range (1 &gt; number of parameters, which is 0).
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1055)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:926)
+	at com.mysql.jdbc.PreparedStatement.checkBounds(PreparedStatement.java:3288)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3272)
+	at com.mysql.jdbc.PreparedStatement.setInternal(PreparedStatement.java:3314)
+	at com.mysql.jdbc.PreparedStatement.setInt(PreparedStatement.java:3258)
+	at com.mysql.jdbc.PreparedStatement.setObject(PreparedStatement.java:3533)
+	at org.apache.commons.dbcp.DelegatingPreparedStatement.setObject(DelegatingPreparedStatement.java:166)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setValue(StatementCreatorUtils.java:432)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValueInternal(StatementCreatorUtils.java:235)
+	at org.springframework.jdbc.core.StatementCreatorUtils.setParameterValue(StatementCreatorUtils.java:166)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.doSetValue(ArgumentPreparedStatementSetter.java:66)
+	at org.springframework.jdbc.core.ArgumentPreparedStatementSetter.setValues(ArgumentPreparedStatementSetter.java:47)
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:686)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:629)
+	... 30 more
 </pre></div></td>
-<td>40</td>
-<td>com.ucr.GimnasioXyzLibraryB05027.ClienteTest@5276e6b0</td></tr>
+<td>46</td>
+<td>com.ucr.GimnasioXyzLibraryB05027.ClienteTest@159f197</td></tr>
 </table><p>
 </body>
 </html>

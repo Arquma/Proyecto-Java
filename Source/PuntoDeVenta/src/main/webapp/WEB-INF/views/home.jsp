@@ -30,18 +30,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               
                 <h4 class="modal-title" id="titulo-modal"></h4>
+                <spam class="pull-right" id="preciomodal"></spam>
+                <input type="hidden" id="productoSeleccionado" value="">
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="modal-body">
                 <!--Formulario dentro de la modal -->
-                <form method="get" id="form" action="">
-                  
-                  
-                   
-                  
-                 
-                </form>
+               
 
             </div>
             
@@ -124,22 +120,68 @@
 
 	<script>
 	
-	$( "*", document.body ).click(function( event ) {
-		  event.stopPropagation();
-		  var domElement = $( this ).find('input');
-		 // $( "#titulo-modal" ).text( "Clicked on - " + domElement.nodeValue);
-		 // $( "#titulo-modal" ).html( "clicked: " + event.target);
-		//$( "#titulo-modal" ).html(  $(event.target).child('input').val());
-		$(this).find('input').toggle();
-		});
 
 	$( "#listaproductos" ).click(function( event ) {
 		var target = $( event.target );
-		  $( "#titulo-modal" ).html( "clicked: " + target.find('input').val() );
+		//  $( "#titulo-modal" ).html( "clicked: " + target.find('input').val() );
+		
+		$( "#productoSeleccionado" ).val( target.find('input').val() );
+		showMessage();
 		});
 	 function showMessage() {
 
-		 $("#titulo-modal").text();
+		 $.ajax({
+				url: 'ingredientes',
+				data: {
+					Id: $('#productoSeleccionado').val()
+					},
+				type: 'POST',
+				
+				success: function(result)
+		    	{
+					
+		    		var data = $(JSON.parse(result));
+		    		$("#titulo-modal").text(data[0]["nombre"]);
+		    		$("#preciomodal").text("Precio: "+data[0]["precio"]);
+		    		$("#modal-body").empty();
+		    		if(data[0]["preparacion"]==true){
+		    			
+		    			$("#modal-body").empty();
+		    			
+		    		$( data[0]["ingredientes"] ).each(function( index, info ) {
+
+
+		    			
+		    			$("#modal-body").append(
+		    					  
+		 				       	
+		 				                
+		 				         "<div class=\"row\"> "+
+		 				         "  <div class=\"col-lg-12\">"+
+		 				          "     <label for=\"input_name\"></label>"+
+		 				           "    <div class=\"input-group\">"+
+		 				             "      <span class=\"input-group-addon\">"+
+		 				              "         <label>"+
+		 				               "        <input type=\"checkbox\" checked=\"checked\" aria-label=\"Over here on the right\">"+
+		 				              			info.ingrediente.nombre+
+		 				                 "      </label>"+
+		 				      "             </span>"+
+		 				       "        </div>"+
+		 				               <!-- /input-group -->
+		 				      "     </div>"+
+		 				         
+		 				     "  </div>"
+		    			);
+		    			
+		        	});
+		    		}//fin if
+		        	
+		   		 },
+					  error: function(data){
+					  	alert("error");
+					  }
+			});
+		 
 		 $("#myModal").modal('show');
 	 };
 	
@@ -159,7 +201,9 @@
 			    			var icon;
 			    			if(info.preparacion==1){
 			    			 green=	"<div class=\" panel panel-green\">";
-			    			 icon="<i class=\" fa fa-beer fa-5x\"></i>";
+			    			 icon="<i class=\" fa fa-beer fa-5x\">"+
+			    			 "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
+			    			 "</i>";
 			    			}else{
 			    			 green=	"<div class=\" panel panel-primary\">"	;
 			    			 icon="<i class=\" fa fa-lemon-o fa-5x\">"+
@@ -169,7 +213,7 @@
 			    			}
 			        		$("#listaproductos").append(
 				       // 	"<div class=\" col-lg-3 col-md-6\" data-toggle=\"modal\" data-target=\"#myModal\"  >"+
-				       	 	"<div value=\" " + info.id+ "\" class=\" col-lg-3 col-md-6\" onclick=\"showMessage();\"  >"+
+				       	 	"<div value=\" " + info.id+ "\" class=\" col-lg-3 col-md-6\"   >"+
 
 			                  green+
 			                  "<div class=\" panel-heading\">"+
@@ -208,12 +252,7 @@
 
 	<script src="<c:url value="/resources/metisMenu.min.js" />"></script>
 	<script src="<c:url value="/resources/raphael-min.js" />"></script>
-	<%
-		// <script src="<c:url value="/resources/morris.min.js" />"></script>
-	%>
-	<%
-		//<script src="<c:url value="/resources/morris-data.js" />"></script>
-	%>
+	
 	<script src="<c:url value="/resources/sb-admin-2.js" />"></script>
 	<script src="<c:url value="/resources/bootstrap.min.js" />"></script>
 </body>

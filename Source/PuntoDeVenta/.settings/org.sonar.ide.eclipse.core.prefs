@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
 extraProperties=
 projectKey=com.ucr.PuntoDeVenta\:PuntoDeVenta
-serverUrl=http\://ec2-54-218-89-26.us-west-2.compute.amazonaws.com\:9000
+serverUrl=http\://localhost\:9000
 version=2

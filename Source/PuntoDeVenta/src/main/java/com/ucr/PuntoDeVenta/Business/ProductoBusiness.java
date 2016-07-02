@@ -24,5 +24,10 @@ public class ProductoBusiness {
 	public List<Producto> getProductos() {
 		return productoDao.getProductos();
 	}
+	
+	public Producto buscarProducto(int id) {
+		return productoDao.buscarProducto(id);
+	}
+	
 
 }
