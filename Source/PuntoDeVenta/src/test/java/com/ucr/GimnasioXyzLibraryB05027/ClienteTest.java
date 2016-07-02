@@ -1,13 +1,12 @@
 package com.ucr.GimnasioXyzLibraryB05027;
 
 
-import org.springframework.context.ApplicationContext;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ucr.PuntoDeVenta.DataAccess.ClienteDao;
-import com.ucr.PuntoDeVenta.Domain.Cliente;
+import com.ucr.PuntoDeVenta.DataAccess.ProductoDao;
 
 public class ClienteTest {
   @Test
@@ -16,21 +15,12 @@ public class ClienteTest {
 	  
 	  try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("test-context.xml")){
 	 // ApplicationContext context = new ClassPathXmlApplicationContext("test-context.xml");
-	  ClienteDao clienteDao = (ClienteDao) context.getBean("clienteDao");	  
+	  ProductoDao clienteDao = (ProductoDao) context.getBean("productoDao");	  
 	  
-	  Cliente cliente = new Cliente();
-	  cliente= clienteDao.buscar(2);
-	  Assert.assertEquals("Aaron", cliente.getNombreCliente());
+	  int existencia= clienteDao.getExistencias(4);
+	  Assert.assertEquals(5, existencia);
 	  }
   }
   
-  @Test
-  public void insertar() {
-	  try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("test-context.xml")){
-		  ClienteDao clienteDao = (ClienteDao) context.getBean("clienteDao");
-		  Cliente cliente = new Cliente();
-	      Assert.assertEquals(true,clienteDao.insertar(cliente));
-	  }
-  }
   
 }

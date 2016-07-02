@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!--  Conexion con DB -->
-	<beans:bean id="clienteDao" class="com.ucr.GimnasioXyzLibraryB05027.DataAccess.ClienteDao">
+	<beans:bean id="productoDao" class="com.ucr.PuntoDeVenta.DataAccess.ProductoDao">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 

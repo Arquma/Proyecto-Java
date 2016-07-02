@@ -24,7 +24,30 @@
 <body>
 	<br />
 
+	
+<!--Contenido de la modal -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="titulo-modal"></h4>
+            </div>
+            <div class="modal-body">
+                <!--Formulario dentro de la modal -->
+                <form method="get" id="form" action="">
+                  
+                  
+                   
+                  
+                 
+                </form>
 
+            </div>
+            
+        </div>
+    </div>
+</div><!--Fin contenido de la modal -->
 
 
 	<div id="wrapper">
@@ -101,6 +124,27 @@
 
 	<script>
 	
+	$( "*", document.body ).click(function( event ) {
+		  event.stopPropagation();
+		  var domElement = $( this ).find('input');
+		 // $( "#titulo-modal" ).text( "Clicked on - " + domElement.nodeValue);
+		 // $( "#titulo-modal" ).html( "clicked: " + event.target);
+		//$( "#titulo-modal" ).html(  $(event.target).child('input').val());
+		$(this).find('input').toggle();
+		});
+
+	$( "#listaproductos" ).click(function( event ) {
+		var target = $( event.target );
+		  $( "#titulo-modal" ).html( "clicked: " + target.find('input').val() );
+		});
+	 function showMessage() {
+
+		 $("#titulo-modal").text();
+		 $("#myModal").modal('show');
+	 };
+	
+	
+	
 		$(function()
 			{
 			    $.ajax({
@@ -118,20 +162,30 @@
 			    			 icon="<i class=\" fa fa-beer fa-5x\"></i>";
 			    			}else{
 			    			 green=	"<div class=\" panel panel-primary\">"	;
-			    			 icon="<i class=\" fa fa-lemon-o fa-5x\"></i>";
+			    			 icon="<i class=\" fa fa-lemon-o fa-5x\">"+
+			    			 "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
+			    			 "</i>";
 
 			    			}
 			        		$("#listaproductos").append(
-				        	"<div class=\" col-lg-3 col-md-6\">"+
+				       // 	"<div class=\" col-lg-3 col-md-6\" data-toggle=\"modal\" data-target=\"#myModal\"  >"+
+				       	 	"<div value=\" " + info.id+ "\" class=\" col-lg-3 col-md-6\" onclick=\"showMessage();\"  >"+
+
 			                  green+
 			                  "<div class=\" panel-heading\">"+
 			                   "<div class=\" row\">"+
 			                    "<div class=\" col-xs-3\">"+
 			                    icon+
+			                    "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
 			                    "</div>"+
 			                   "<div class=\" col-xs-9 text-right\">"+
-			                    "<div class=\" huge\">"+info.existencias+"</div>"+
-			                     "<div>"+info.nombre +"</div>"+
+			                    "<div class=\" huge\">"+info.existencias+
+			                    "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
+			                    "</div>"+
+			                   "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
+			                     "<div>"+info.nombre +
+			                     "<input type=\"hidden\" name=\"idproducto\" value=\" " + info.id+ "\">"+
+			                     "</div>"+
 			                    "</div>"+
 			                   "</div>"+
 			                  "</div>"+

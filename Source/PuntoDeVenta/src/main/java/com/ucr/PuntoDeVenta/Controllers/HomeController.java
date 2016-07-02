@@ -41,12 +41,6 @@ public class HomeController {
 		String lan = (language == null || language.isEmpty())?"en":language;
 		RequestContextUtils.getLocaleResolver(request).setLocale(request, response, new Locale(lan));
     	
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
 	}
